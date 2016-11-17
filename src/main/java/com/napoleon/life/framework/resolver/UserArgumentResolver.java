@@ -47,12 +47,12 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         	this.bindRequestParameters(binder, webRequest);
         	String errors = BaseValidator.validate(binder.getTarget(), false);
             if (!StringUtil.isEmpty(errors)) {
-                throw new CommonException(CommonResultCode.ACCOUNT_HAS_ACTIVATE, errors);
+                throw new CommonException(CommonResultCode.PARAMS_WRONG, errors);
             }
         }
 
         Object obj = binder.convertIfNecessary(binder.getTarget(), parameter.getParameterType(), parameter);
-        ParamValid paramValid = parameter.getMethodAnnotation(ParamValid.class);
+        ParamValid paramValid = parameter.getParameterAnnotation(ParamValid.class);
         if(paramValid == null || paramValid.validUser()){
         	this.addUserInfo(webRequest, obj);
         }
@@ -69,8 +69,13 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         		((BaseDto)attribute).setUserNo(user.getString("user_no"));
                 ((BaseDto)attribute).setUserName(user.getString("user_name"));
                 ((BaseDto)attribute).setPhone(user.getString("phone"));
+                ((BaseDto)attribute).setEmail(user.getString("email"));
+                ((BaseDto)attribute).setSex(user.getString("sex"));
+                ((BaseDto)attribute).setHeight(user.getInteger("height"));
+                ((BaseDto)attribute).setBirthday(user.getTimestamp("birthday"));
+                ((BaseDto)attribute).setAccess_token(access_token);
         	}else{
-        		throw new CommonException(CommonResultCode.ACCOUNT_HAS_ACTIVATE);
+        		throw new CommonException(CommonResultCode.ACCESS_TOKEN_EXPIRED);
         	}
         }
     }
