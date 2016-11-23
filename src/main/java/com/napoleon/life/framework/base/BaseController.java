@@ -19,6 +19,7 @@ public class BaseController {
     @ResponseBody
     public ResponseEntity<String> exception(HttpServletRequest request, HttpServletResponse response, Exception e) {
         String rlt = null;
+        e.printStackTrace();
         if (e instanceof CommonException) {
         	CommonException be = (CommonException) e;
         	rlt = CommonRltUtil.createCommonRltToString(be.getErrCode(), be.getErrChineseMsg());
