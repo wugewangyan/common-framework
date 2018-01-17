@@ -20,8 +20,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.napoleon.life.common.util.StringUtil;
 import com.napoleon.life.common.util.validator.BaseValidator;
 import com.napoleon.life.exception.CommonException;
-import com.napoleon.life.exception.CommonResultCode;
 import com.napoleon.life.framework.base.BaseDto;
+import com.napoleon.life.framework.code.FrameworkModelCode;
 import com.napoleon.life.framework.redis.RedisServer;
 
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
@@ -47,7 +47,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         	this.bindRequestParameters(binder, webRequest);
         	String errors = BaseValidator.validate(binder.getTarget(), false);
             if (!StringUtil.isEmpty(errors)) {
-                throw new CommonException(CommonResultCode.PARAMS_WRONG, errors);
+                throw new CommonException(FrameworkModelCode.FRAMEWORK_PARAMS_WRONG, errors);
             }
         }
 
@@ -75,7 +75,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
                 ((BaseDto)attribute).setBirthday(user.getTimestamp("birthday"));
                 ((BaseDto)attribute).setAccess_token(access_token);
         	}else{
-        		throw new CommonException(CommonResultCode.ACCESS_TOKEN_EXPIRED);
+        		throw new CommonException(FrameworkModelCode.FRAMEWORK_ACCESS_TOKEN_EXPIRED);
         	}
         }
     }

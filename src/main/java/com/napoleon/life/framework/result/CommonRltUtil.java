@@ -1,6 +1,7 @@
 package com.napoleon.life.framework.result;
 
-import com.napoleon.life.exception.CommonResultCode;
+import com.napoleon.life.exception.ModelCodeInterface;
+
 
 public class CommonRltUtil {
     /**
@@ -9,7 +10,7 @@ public class CommonRltUtil {
      * @param code
      * @return
      */
-    public static CommonRlt createCommonRlt(CommonResultCode code) {
+    public static CommonRlt createCommonRlt(ModelCodeInterface code) {
         return new CommonRlt(code.getCode(), code.getChineseMessage());
     }
 
@@ -19,7 +20,7 @@ public class CommonRltUtil {
      * @param code
      * @return
      */
-    public static String createCommonRltToString(CommonResultCode code) {
+    public static String createCommonRltToString(ModelCodeInterface code) {
         return new CommonRlt(code.getCode(), code.getChineseMessage()).toJSONString();
     }
 
@@ -49,7 +50,7 @@ public class CommonRltUtil {
      * @param code
      * @return
      */
-    public static CommonRlt createCommonRlt(CommonResultCode code, Object data) {
+    public static CommonRlt createCommonRlt(ModelCodeInterface code, Object data) {
         return new CommonRlt(code.getCode(), code.getChineseMessage(), data);
     }
     
@@ -60,7 +61,7 @@ public class CommonRltUtil {
      * @param code
      * @return
      */
-    public static String createCommonRltToString(CommonResultCode code, Object data) {
+    public static String createCommonRltToString(ModelCodeInterface code, Object data) {
         return new CommonRlt(code.getCode(), code.getChineseMessage(), data).toJSONString();
     }
 

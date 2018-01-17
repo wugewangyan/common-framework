@@ -13,6 +13,7 @@ import redis.clients.jedis.ShardedJedisPool;
 import redis.clients.jedis.Transaction;
 
 import com.napoleon.life.exception.CommonException;
+import com.napoleon.life.framework.code.FrameworkModelCode;
 
 /**
  * redis缓存操作 时间单位是秒 永久为null
@@ -89,7 +90,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -114,7 +115,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -136,7 +137,7 @@ public class RedisServer {
 			result = shardedJedis.del(key);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -167,7 +168,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -192,7 +193,7 @@ public class RedisServer {
 			result = shardedJedis.lrange(key, 0, -1);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -217,7 +218,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -242,7 +243,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -266,7 +267,7 @@ public class RedisServer {
 
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -290,7 +291,7 @@ public class RedisServer {
 
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -315,7 +316,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -337,7 +338,7 @@ public class RedisServer {
 			result = shardedJedis.lpop(key);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -359,7 +360,7 @@ public class RedisServer {
 			result = shardedJedis.rpop(key.getBytes());
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -381,7 +382,7 @@ public class RedisServer {
 			result = shardedJedis.llen(key);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -403,7 +404,7 @@ public class RedisServer {
 			result = shardedJedis.ltrim(key, start, end);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -438,7 +439,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -463,7 +464,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -491,7 +492,7 @@ public class RedisServer {
 //			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -515,7 +516,7 @@ public class RedisServer {
 				shardedJedis.expire(key, time);
 			}
 		} catch (Exception e) {
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -541,7 +542,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -566,7 +567,7 @@ public class RedisServer {
 			}
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}
@@ -588,7 +589,7 @@ public class RedisServer {
 			value = shardedJedis.hdel(key, fields);
 		} catch (Exception e) {
 			shardedJedisPool.returnBrokenResource(shardedJedis);
-			throw new CommonException(e);
+			throw new CommonException(FrameworkModelCode.FRAMEWORK_REDIS_OPERATION_EXCEPTION, e);
 		} finally {
 			returnResource(shardedJedisPool, shardedJedis);
 		}

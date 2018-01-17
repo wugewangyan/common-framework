@@ -7,16 +7,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.napoleon.life.exception.CommonException;
-import com.napoleon.life.exception.CommonResultCode;
+import com.napoleon.life.framework.code.FrameworkModelCode;
 import com.napoleon.life.framework.result.CommonRltUtil;
 
 public class BaseController {
 
 	@ExceptionHandler
-    @ResponseBody
     public ResponseEntity<String> exception(HttpServletRequest request, HttpServletResponse response, Exception e) {
         String rlt = null;
         e.printStackTrace();
@@ -24,7 +22,7 @@ public class BaseController {
         	CommonException be = (CommonException) e;
         	rlt = CommonRltUtil.createCommonRltToString(be.getErrCode(), be.getErrChineseMsg());
         } else {
-        	rlt = CommonRltUtil.createCommonRltToString(CommonResultCode.SYSTEM_ERR);
+        	rlt = CommonRltUtil.createCommonRltToString(FrameworkModelCode.FRAMEWORK_SYSTEM_ERROR);
         }
         
         HttpHeaders headers = new HttpHeaders();
